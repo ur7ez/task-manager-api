@@ -1,0 +1,129 @@
+### User Auth
+
+# Get User
+GET {{endpoint}}/user
+Accept: application/json
+Authorization: Bearer {{API_AccessToken1}}
+
+###
+
+# Auth Login
+POST {{endpoint}}/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "kassulke.alanis@example.org",
+    "password": "password"
+}
+
+###
+
+# Auth Register
+POST {{endpoint}}/register
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "John Smith",
+    "email": "jsmith@example.com",
+    "password": "password",
+    "password_confirmation": "password"
+}
+
+###
+
+### Tasks
+
+# List all tasks  | ?filter[is_done]=1&sort=-is_done,title
+GET {{endpoint}}/tasks
+Accept: application/json
+Authorization: Bearer {{API_AccessToken1}}
+
+###
+
+# get Task by ID
+GET {{endpoint}}/tasks/2
+Accept: application/json
+Authorization: Bearer {{API_AccessToken2}}
+
+###
+
+# create new Task
+POST {{endpoint}}/tasks
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{API_AccessToken1}}
+
+{
+    "title": "Do my homework",
+    "project_id": 3
+}
+
+###
+
+# update Task by ID
+PUT {{endpoint}}/tasks/2
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{API_AccessToken1}}
+
+{
+    "title": "Do some homework (updated)"
+}
+
+###
+
+# delete Task by ID
+DELETE {{endpoint}}/tasks/3
+Accept: application/json
+Authorization: Bearer {{API_AccessToken1}}
+
+###
+
+### Projects
+
+# Create new Project for user
+POST {{endpoint}}/projects
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{API_AccessToken1}}
+
+{
+    "title": "School"
+}
+
+###
+
+# Update Project by ID for user
+PUT {{endpoint}}/projects/1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{API_AccessToken1}}
+
+{
+    "title": "University"
+}
+
+###
+
+# Show Project by ID for user
+GET {{endpoint}}/projects/1
+Accept: application/json
+Authorization: Bearer {{API_AccessToken1}}
+
+###
+
+# List Projects for user  | ?include=tasks
+GET {{endpoint}}/projects
+Accept: application/json
+Authorization: Bearer {{API_AccessToken3}}
+
+###
+
+# delete Project by ID
+DELETE {{endpoint}}/projects/2
+Accept: application/json
+Authorization: Bearer {{API_AccessToken1}}
+
+###
